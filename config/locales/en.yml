@@ -21,3 +21,13 @@
 
 en:
   hello: "Hello world"
+  home: "Home"
+  login: "Log in"
+  signup: "Sign up"
+  base_title: "Framgia e-Learning System"
+  about_us: "About us"
+  contact: "Contact"
+  welcome_text: "Learning, made joyful"
+  sub_welcome_text: "We make learning languages and vocab so full of joy and life, you’ll laugh out loud."
+  join_now: "Join now, it's FREE!"
+  logo: "FELS"
