@@ -1,0 +1,12 @@
+<% if category.present? %>
+  <div id="category-item-<%= category.id %>">
+    <%= category.name %>
+    <%= category.duration %>
+    <%= category.word_count %>
+    <a class="btn btn-primary" data-toggle="modal" data-target=
+      "#category-modal" href=<%= edit_admin_category_path(category) %>>
+      <%= t "button_edit" %>
+    </a>
+    <br>
+  </div>
+<% end %>
