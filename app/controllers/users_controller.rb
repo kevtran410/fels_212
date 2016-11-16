@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, except: [:new, :create]
-  before_action :find_user, only: :show
+  before_action :find_user, except: [:index, :new, :create]
+  before_action :valid_user, only: [:edit, :update]
+
+  def index
+    @users = User.paginate page: params[:page],
+      per_page: Settings.per_page_users
+  end
 
   def new
     @user = User.new
@@ -20,17 +26,27 @@ class UsersController < ApplicationController
   def show
 
   end
-  
-  private
-  def find_user
-    @user = User.find_by id: params[:id]
-    if @user.nil?
-      flash[:danger] = t "cant_find_user"
+
+  def edit
+    
+  end
+
+  def update
+    if @user.update_attributes user_params
+      flash[:success] = t "profile_updated"
+      redirect_to @user
+    else
+      render :edit
     end
   end
 
+  private
   def user_params
     params.require(:user).
       permit :name, :email, :password, :password_confirmation
+  end
+
+  def valid_user
+    redirect_to root_url unless @user.current_user? current_user
   end
 end

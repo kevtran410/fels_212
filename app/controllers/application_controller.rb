@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
+
+  def find_user
+    @user = User.find_by id: params[:id]
+    if @user.nil?
+      flash[:danger] = t "cant_find_user"
+      redirect_to request.referrer || root_url
+    end
+  end
 end
