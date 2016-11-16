@@ -20,7 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   home: "Home"
   login: "Log in"
   signup: "Sign up"
@@ -31,3 +30,11 @@ en:
   sub_welcome_text: "We make learning languages and vocab so full of joy and life, you’ll laugh out loud."
   join_now: "Join now, it's FREE!"
   logo: "FELS"
+  create_account: "Create my account"
+  name: "Name"
+  email: "Email"
+  password: "Password"
+  confirm_password: "Confirm password"
+  signup_success_welcome: "Welcome to the Framgia e-Learning System"
+  error: "error"
+  form_error_msg: "The form contains"
