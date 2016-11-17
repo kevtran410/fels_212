@@ -1,7 +1,7 @@
 class Admin::CategoriesController < ApplicationController
 
   before_action :logged_in_user, :require_admin
-  before_action :find_category, only: [:edit, :update]
+  before_action :find_category, only: [:edit, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -30,6 +30,14 @@ class Admin::CategoriesController < ApplicationController
     if @category.update_attributes category_params
       flash.now[:success] = t "admin.edit_category_success_message"
     end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def destroy
+    @category.destroy
+    flash[:success] = t "admin.delete_category_success_message"
     respond_to do |format|
       format.js
     end

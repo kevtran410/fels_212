@@ -3,10 +3,11 @@
     <%= category.name %>
     <%= category.duration %>
     <%= category.word_count %>
-    <a class="btn btn-primary" data-toggle="modal" data-target=
-      "#category-modal" href=<%= edit_admin_category_path(category) %>>
-      <%= t "button_edit" %>
-    </a>
+    <%= link_to t("button_edit"), edit_admin_category_path(category), class:
+      "btn btn-primary", "data-toggle": "modal", "data-target":
+      "#category-modal" %>
+    <%= link_to t("button_delete"), [:admin, category], method: :delete, data: {
+      confirm: t("confirm_delete_message")}, class: "btn btn-danger", remote: true %>
     <br>
   </div>
 <% end %>
