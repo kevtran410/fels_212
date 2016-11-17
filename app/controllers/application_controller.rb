@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     unless logged_in?
       store_location
       flash[:danger] = t "logged_in_user"
-      redirect_to root_url
+      redirect_to login_url
     end
   end
 
@@ -17,6 +17,13 @@ class ApplicationController < ActionController::Base
     if @user.nil?
       flash[:danger] = t "cant_find_user"
       redirect_to request.referrer || root_url
+    end
+  end
+
+  def require_admin
+    unless current_user.is_admin?
+      flash[:danger] = t "require_admin_message"
+      redirect_to root_url
     end
   end
 end

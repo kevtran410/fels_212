@@ -1,0 +1,8 @@
+<% if @category.errors.any? %>
+  $("#category-modal .modal-content").html("<%= j render("new_form") %>");
+<% else %>
+  $("#category-modal").modal("hide");
+  $("#category-index-list").prepend(
+    "<%= j render("category",category: @category) %>");
+  $("#flash-msg").html("<%= j render("shared/flash_message") %>");
+<% end %>

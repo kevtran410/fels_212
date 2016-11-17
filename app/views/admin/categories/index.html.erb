@@ -1,0 +1,23 @@
+<% provide :title, t("admin.category_index_title") %>
+
+<h1>
+  <%= t "admin.category_index_title" %>
+</h1>
+
+<a class="btn btn-primary" data-toggle="modal" data-target=
+  "#category-modal" href=<%= new_admin_category_path %>>
+   <%= t "admin.create_new_category" %>
+</a>
+
+<div id="category-index-list">
+  <% if @categories.any? %>
+    <%= render @categories %>
+  <% end %>
+</div>
+
+<div id="category-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
