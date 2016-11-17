@@ -71,6 +71,7 @@ en:
   label_word_per_lesson: "Words per lesson"
   button_save: "Save"
   category_not_found_message: "Category does not exist."
+  button_delete: "Delete"
 
   admin:
     category_index_title: "Categories Management"
@@ -79,3 +80,6 @@ en:
     create_new_category_success_msg: "New category created successfully!"
     edit_category_title: "Edit category"
     edit_category_success_message: "Edited category successfully!"
+    delete_category_success_message: "Category deleted"
+  confirm_delete_message: "You sure?"
+

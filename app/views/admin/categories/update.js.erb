@@ -1,5 +1,5 @@
 <% if @category.errors.any? %>
-  $("#category-modal .modal-content").html("<%= j render("form") %>");
+  $("#category-modal .modal-content").html("<%= j render("edit_form") %>");
 <% else %>
   $("#category-modal").modal("hide");
   $("#category-item-<%= @category.id %>").replaceWith(
