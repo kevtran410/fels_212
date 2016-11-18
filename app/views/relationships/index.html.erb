@@ -1,0 +1,28 @@
+<% provide :title, @title %>
+<div class="container">
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <h1>
+          <%= gravatar_for @user %>
+          <%= @user.name %>
+        </h1>
+      </section>
+      <section>
+        <%= render "users/follow_form" %>
+      </section>
+      <section class="stats">
+        <%= render "shared/stats" %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3><strong><%= @title.upcase %></strong></h3>
+      <% if @users.any? %>
+        <ul class="users follow">
+          <%= render @users %>
+        </ul>
+        <%= will_paginate @users %>
+      <% end %>
+    </div>
+  </div>
+</div>

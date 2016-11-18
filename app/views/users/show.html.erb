@@ -7,6 +7,12 @@
         <%= @user.name %>
       </h1>
     </section>
+    <section>
+      <%= render "users/follow_form" %>
+    </section>
+    <section class="stats">
+      <%= render "shared/stats" %>
+    </section>
   </aside>
   <div class="col-md-8">
     <%= link_to t("link_word_list"), "#", class: "btn btn-primary" %>
