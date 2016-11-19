@@ -1,0 +1,6 @@
+<% provide :title, @category.name %>
+<div class="row jumbotron">
+  <h1><%= @category.name %></h1>
+  <h4><%= t "label_word_per_lesson" %>  <%= @category.word_count %></h4>
+  <h4><%= t "duration_title" %>  <%= @category.duration %></h4>
+</div>

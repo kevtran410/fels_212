@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @courses = Category.ongoing_course @current_user.id
     @relationship = if current_user.following? @user
       current_user.active_relationships.find_by followed_id: @user.id
     else

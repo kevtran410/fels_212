@@ -15,7 +15,26 @@
     </section>
   </aside>
   <div class="col-md-8">
-    <%= link_to t("link_word_list"), "#", class: "btn btn-primary" %>
-    <%= link_to t("link_lesson"), "#", class: "btn btn-primary" %>
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a data-toggle="tab" href="#courses-content"><%= t "link_courses" %></a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#lessons-content"><%= t "link_lessons" %></a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#activitites-content"><%= t "link_activities" %></a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div id="courses-content" class="tab-pane fade in active">
+        <p><%= render @courses %></p>
+      </div>
+      <div id="lessons-content">
+
+      </div>
+      <div id="activitites-content" class="tab-pane fade">
+      </div>
+    </div>
   </div>
 </div>
