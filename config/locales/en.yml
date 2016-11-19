@@ -45,8 +45,8 @@ en:
   signup_label: "Sign up now!"
   remember_label: "Remember me!"
   login_success_noti: "Login success"
-  link_word_list: "Word"
-  link_lesson: "Lesson"
+  link_activities: "Activities"
+  link_courses: "Courses"
   logged_in_user: "Please log in!"
   invalid_login: "Invalid email/password combination"
   cant_find_user: "Can't find that user!"
@@ -87,5 +87,6 @@ en:
     delete_category_success_message: "Category deleted"
   confirm_delete_message: "You sure?"
   invalid_user: "Invalid user"
-
-
+  search_button: "Search"
+  link_lessons: "Lessons"
+  learn_button: "Learn"
