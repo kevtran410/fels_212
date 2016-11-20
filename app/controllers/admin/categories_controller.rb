@@ -6,7 +6,7 @@ class Admin::CategoriesController < ApplicationController
   before_action :find_category, except: [:index, :new, :create]
 
   def index
-    @categories = Category.all
+    @categories = Category.search params[:search]
   end
 
   def new
