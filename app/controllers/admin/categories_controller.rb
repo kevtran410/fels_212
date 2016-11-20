@@ -1,7 +1,9 @@
 class Admin::CategoriesController < ApplicationController
 
+  include CategoryUtils
+
   before_action :logged_in_user, :require_admin
-  before_action :find_category, only: [:edit, :update, :destroy]
+  before_action :find_category, except: [:index, :new, :create]
 
   def index
     @categories = Category.all
@@ -10,6 +12,12 @@ class Admin::CategoriesController < ApplicationController
   def new
     @category = Category.new
     render layout: false
+  end
+
+  def show
+    @word = Word.new
+    Settings.mininum_answers_count.times {@word.answers.build}
+    @words = @category.words
   end
 
   def create
@@ -46,13 +54,5 @@ class Admin::CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit :name, :duration, :word_count
-  end
-
-  def find_category
-    @category = Category.find_by id: params[:id]
-    if @category.nil?
-      flash[:danger] = t "category_not_found_message"
-      redirect_to admin_categories_path
-    end
   end
 end
