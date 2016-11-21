@@ -42,4 +42,28 @@ $(document).on('turbolinks:load', function() {
     regexp = new RegExp($(this).data("id"), "g");
     $(this).before($(this).data("fields").replace(regexp,time));
   });
+
+  if ($("#duration_lesson").length) {
+    initCountdown();
+    $counter = setInterval(countdown, 1000);
+  }
 });
+
+function initCountdown() {
+  $duration = parseInt($("#duration_lesson").attr("value"));
+  $minutes = Math.floor($duration/60);
+  $seconds = $duration - $minutes*60;
+}
+
+function countdown() {
+  $seconds--;
+  if ($seconds < 0) {
+    if ($minutes <= 0) {
+      clearInterval($counter);
+      $("form").submit();
+    }
+    $seconds = 59;
+    $minutes--;
+  }
+  $("#lesson-countdown").html($minutes + " : " + $seconds);
+}

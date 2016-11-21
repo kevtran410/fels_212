@@ -1,0 +1,13 @@
+<% unless @lesson.finished? %>
+  <div id="lesson-countdown"></div>
+  <%= hidden_field :duration, "lesson",
+    value: (@lesson.end_time - Time.now).to_i %>
+<% end %>
+<%= form_for @lesson do |f| %>
+  <div class="result-list">
+    <%= f.fields_for :results do |builder| %>
+      <%= render "result", f: builder %>
+    <% end %>
+  </div>
+  <%= f.submit t("button_finish") unless @lesson.finished? %>
+<% end %>

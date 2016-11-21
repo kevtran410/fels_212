@@ -1,4 +1,5 @@
 <% provide :title, @category.name %>
+
 <div class="row jumbotron">
   <h1><%= @category.name %></h1>
   <h4><%= t "label_word_per_lesson" %>  <%= @category.word_count %></h4>
@@ -21,7 +22,17 @@
       <%= will_paginate @words %>
     </div>
     <div id="lessons-content" class="tab-pane fade">
-
+      <%= form_for @support.lesson, remote: true do |f| %>
+        <%= f.hidden_field :category_id, value: @category.id %>
+        <%= f.submit t("create_lesson"), class: "btn btn-primary" %>
+      <% end %>
+      <div id="div-lesson-list">
+        <% if @support.lessons.any? %>
+          <% @support.lessons.each do |lesson| %>
+            <%= render "lessons/lesson_item", lesson: lesson %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
