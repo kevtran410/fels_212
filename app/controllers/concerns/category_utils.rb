@@ -8,7 +8,7 @@ module CategoryUtils
     end
     if @category.nil?
       flash[:danger] = t "category_not_found_message"
-      redirect_to admin_categories_path
+      redirect_to current_user.is_admin ? admin_categories_path : categories_path
     end
   end
 end

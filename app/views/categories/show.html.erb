@@ -4,3 +4,24 @@
   <h4><%= t "label_word_per_lesson" %>  <%= @category.word_count %></h4>
   <h4><%= t "duration_title" %>  <%= @category.duration %></h4>
 </div>
+
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li>
+      <a data-toggle="tab" href="#words-content"><%= t "link_words" %></a>
+    </li>
+    <li>
+      <a data-toggle="tab" href="#lessons-content"><%= t "link_lessons" %></a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div id="words-content" class="tab-pane fade in active">
+      <%= render "words/search_form" %>
+      <%= render @words %>
+      <%= will_paginate @words %>
+    </div>
+    <div id="lessons-content" class="tab-pane fade">
+
+    </div>
+  </div>
+</div>

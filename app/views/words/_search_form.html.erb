@@ -1,0 +1,12 @@
+<%= link_to t("link_all"), category_path(params[:id]),
+  class: "col-md-1 col-md-offset-5 btn btn-default" %>
+<%= form_tag category_path(params[:id]), method: "get",
+  class: "search-words input-group col-md-4 " do %>
+  <%= text_field_tag :search, params[:search], placeholder: t("search_text"),
+    class: "form-control txtSearch" %>
+  <span class="input-group-btn">
+    <button class="btn btnSearch" type="submit">
+      <span class="glyphicon glyphicon-search"></span>
+    </button>
+  </span>
+<% end %>
