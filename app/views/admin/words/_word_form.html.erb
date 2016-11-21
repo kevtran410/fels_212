@@ -1,0 +1,26 @@
+<div>
+  <%= form_for [:admin, word], remote: true do |f| %>
+
+    <div id="div-error-messages"></div>
+
+    <%= f.hidden_field :category_id, value: @category.id %>
+
+    <%= f.label :content, t("content_label") %>
+    <%= f.text_field :content, class: "form-control" %>
+
+    <div class="list-answer">
+      <%= f.fields_for :answers do |builder| %>
+        <%= render "admin/words/answer_row", f: builder %>
+      <% end %>
+      <%= btn_add_answer t("admin.button_add_answer"), f, :answers %>
+    </div>
+
+    <% if word.new_record? %>
+      <%= f.submit t("admin.button_add_word"), class: "btn btn-primary" %>
+    <% else %>
+      <%= f.submit t("button_save"), class: "btn btn-info" %>
+      <%= link_to t("button_delete"), [:admin, word], method: :delete,
+        class: "btn btn-danger", remote: true %>
+    <% end %>
+  <% end %>
+</div>

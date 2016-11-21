@@ -1,0 +1,12 @@
+<div id="div-show-category">
+  <div id="div-new-word">
+    <%= render "admin/words/word_form", word: @word %>
+  </div>
+  <div id="div-list-word">
+    <% if @words.any? %>
+      <% @words.each do |word| %>
+        <%= render "admin/words/word", word: word %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

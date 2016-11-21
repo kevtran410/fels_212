@@ -1,0 +1,8 @@
+<% if @word.errors.any? %>
+  $("#div-error-messages").html(
+    "<%= j render("shared/error_messages", object: @word) %>");
+<% else %>
+  $("#div-new-word").html("<%= j render("word_form", word: @new_word) %>");
+  $("#div-list-word").prepend(
+    "<%= j render("word", word: @word) %>");
+<% end %>

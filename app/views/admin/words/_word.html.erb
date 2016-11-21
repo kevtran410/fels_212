@@ -1,0 +1,8 @@
+<div class="word-item" id="word-item-<%= word.id %>">
+  <div class="word-item-flip" id="flip">
+    <%= word.content %>
+  </div>
+  <div class="word-item-panel" id="panel">
+    <%= render "admin/words/word_form", word: word %>
+  </div>
+</div>
