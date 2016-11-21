@@ -8,4 +8,16 @@ class Category < ApplicationRecord
 
   scope :ongoing_course, ->(user_id){joins(:lessons).
     where("lessons.user_id = ?", user_id)}
+  scope :search_categories, ->(search_value){where "name LIKE ?",
+    "%#{search_value}%"}
+  
+  class << self
+    def search search_value
+      categories = if search_value
+        search_categories search_value
+      else
+        Category.all
+      end
+    end
+  end
 end

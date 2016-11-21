@@ -9,9 +9,11 @@
 <div class="row">
   <div class="col-md-4"></div>
   <div class="col-md-8">
-    <ul>
+    <% if @categories.any? %>
       <%= render @categories %>
-    </ul>
-    <%= will_paginate @categories %>
+      <%= will_paginate @categories %>
+    <% else %>
+      <%= t "category_not_found_message" %>
+    <% end %>
   </div>
 </div>

@@ -1,21 +1,32 @@
 <% provide :title, t("admin.category_index_title") %>
+<div class="container-fluid">
+  <h1>
+    <%= link_to t("admin.category_index_title"),
+      admin_categories_path, class: "" %>
+  </h1>
 
-<h1>
-  <%= t "admin.category_index_title" %>
-</h1>
+  <div class="col-md-8">
+    <%= link_to t("admin.create_new_category"), new_admin_category_path, class:
+      "btn btn-primary", "data-toggle": "modal",
+      "data-target": "#category-modal" %>
+  </div>
+  <div class="col-md-4">
+    <%= render "search_form" %>
+  </div>
 
-<%= link_to t("admin.create_new_category"), new_admin_category_path, class:
-  "btn btn-primary", "data-toggle": "modal", "data-target": "#category-modal" %>
 
-<div id="category-index-list">
-  <% if @categories.any? %>
-    <%= render @categories %>
-  <% end %>
-</div>
+  <div id="category-index-list" class="col-md-6 col-md-offset-3">
+    <% if @categories.any? %>
+      <%= render @categories %>
+    <% else %>
+      <%= t "category_not_found_message" %>
+    <% end %>
+  </div>
 
-<div id="category-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <div id="category-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
     </div>
   </div>
 </div>
