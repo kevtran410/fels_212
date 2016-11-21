@@ -2,6 +2,7 @@ class Admin::WordsController < ApplicationController
 
   include CategoryUtils
 
+  before_action :find_word, only: [:update, :destroy]
   before_action :logged_in_user, :require_admin
   before_action only: [:create, :update] {
     find_category params[:word][:category_id]}
@@ -19,8 +20,14 @@ class Admin::WordsController < ApplicationController
   end
 
   def update
-    find_word
     @update_word.update_attributes word_params
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def destroy
+    @update_word.destroy
     respond_to do |format|
       format.js
     end
