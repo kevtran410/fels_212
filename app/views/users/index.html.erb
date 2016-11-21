@@ -1,7 +1,11 @@
 <% provide :title, t("user_index_title") %>
-<h1><%= t "user_index_title" %></h1>
-
-<ul class="users">
-  <%= render @users %>
-</ul>
-<%= will_paginate @users %>
+<h1><%= link_to t("user_index_title"), users_path %></h1>
+<div class="col-md-4 col-md-offset-8">
+  <%= render "users/search_form" %>
+</div>
+<div class="col-md-12">
+  <ul class="users">
+    <%= render @users %>
+  </ul>
+  <%= will_paginate @users %>
+</div>
