@@ -21,9 +21,11 @@
           <p><%= render @courses %></p>
         </div>
         <div id="activitites-content" class="tab-pane fade">
+          <% if @user.activities.any? %>
+            <%= render @user.activities %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-
 </div>
