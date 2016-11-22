@@ -21,6 +21,9 @@ class User < ApplicationRecord
 
   attr_accessor :remember_token
 
+  scope :search_users, ->(search_value){where "name LIKE ?",
+    "%#{search_value}%"}
+
   class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -30,6 +33,14 @@ class User < ApplicationRecord
 
     def new_token
       SecureRandom.urlsafe_base64
+    end
+
+    def search search_value
+      users = if search_value
+        User.search search_value
+      else
+        User.all
+      end
     end
   end
 

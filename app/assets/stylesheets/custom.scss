@@ -136,34 +136,31 @@ $gray-medium-light: #eaeaea;
   display: none;
 }
 /* search form */
-.txtSeach {
-  padding-right: 3px;
-  padding-right: 4px \9;
-  padding-left: 3px;
-  padding-left: 4px \9;
-  margin-bottom: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
+.search-form {
+  padding: 3px;
+  border: solid 1px #E4E4E4;
   border-radius: 3px;
+  background-color: #fff;
+}
+.txtSeach {
+  border: none;
+  box-shadow: none;
 }
 
 .btnSearch {
-  border: 0;
+  margin: 2px 0 0 0;
   background: none;
-  /** belows styles are working good */
-  padding: 2px 5px;
-  margin-top: 2px;
-  position: relative;
-  left: -28px;
-  margin-bottom: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  color:#D9230F;
+  box-shadow: none;
+  border: 0;
+  color: #666666;
+  padding: 0 8px 0 10px;
+  border-left: solid 1px #ccc;
 }
 
-.txtSeach:focus + button {
-  z-index: 3;
+.btnSearch:hover {
+  border: 0;
+  box-shadow: none;
+  border-left: solid 1px #ccc;
 }
 
 .search-words {

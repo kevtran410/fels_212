@@ -1,0 +1,9 @@
+<%= form_tag users_path, method: "get", class: "input-group search-form" do %>
+  <%= text_field_tag :search, params[:search], placeholder: t("search_text"),
+    class: "form-control input-sm txtSearch" %>
+  <span class="input-group-btn">
+    <button class="btn btnSearch" type="submit">
+      <span class="glyphicon glyphicon-search"></span>
+    </button>
+  </span>
+<% end %>
