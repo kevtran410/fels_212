@@ -1,34 +1,29 @@
 <% provide :title, @user.name %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section>
-      <%= render "users/follow_form" %>
-    </section>
-    <section class="stats">
-      <%= render "shared/stats" %>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <ul class="nav nav-tabs">
-      <li class="active">
-        <a data-toggle="tab" href="#courses-content"><%= t "link_courses" %></a>
-      </li>
-      <li>
-        <a data-toggle="tab" href="#activitites-content"><%= t "link_activities" %></a>
-      </li>
-    </ul>
-    <div class="tab-content">
-      <div id="courses-content" class="tab-pane fade in active">
-        <p><%= render @courses %></p>
-      </div>
-      <div id="activitites-content" class="tab-pane fade">
+<div class="container">
+  <div class="content">
+    <div class="col-md-3">
+      <%= render "shared/user_profile_widget" %>
+      <section>
+        <%= render "users/follow_form" %>
+      </section>
+    </div>
+    <div class="col-md-8 nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a data-toggle="tab" href="#courses-content"><%= t "link_courses" %></a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#activitites-content"><%= t "link_activities" %></a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="courses-content" class="tab-pane fade in active">
+          <p><%= render @courses %></p>
+        </div>
+        <div id="activitites-content" class="tab-pane fade">
+        </div>
       </div>
     </div>
   </div>
+
 </div>

@@ -1,17 +1,40 @@
 <% @user ||= current_user %>
-<div class="stats">
-  <%= link_to relationships_path user_id: @user,
-    relationship: t("following") do %>
-    <strong id="following" class="stat">
-      <%= @user.following.count %>
-    </strong>
-    <%= t "following" %>
-  <% end %>
-  <%= link_to relationships_path user_id: @user,
-    relationship: t("followers") do %>
-    <strong id="followers" class="stat">
-      <%= @user.followers.count %>
-    </strong>
-    <%= t "followers" %>
-  <% end %>
+<div class="box-footer">
+  <div class="row">
+    <div class="col-sm-4 border-right">
+      <div class="description-block">
+        <%= link_to relationships_path user_id: @user,
+          relationship: t("following") do %>
+          <h5 class="description-header">
+            <strong id="following"><%= @user.following.count %></strong>
+          </h5>
+          <span class="description-text"><%= t "following" %></span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-sm-4 border-right">
+      <div class="description-block">
+        <%= link_to relationships_path user_id: @user,
+          relationship: t("followers") do %>
+          <h5 class="description-header">
+            <strong id="followers"><%= @user.followers.count %></strong>
+          </h5>
+          <span class="description-text"><%= t "followers" %></span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-sm-4 border-right">
+      <div class="description-block">
+        <%= link_to relationships_path user_id: @user,
+          relationship: t("followers") do %>
+          <h5 class="description-header">
+            <strong></strong>
+          </h5>
+          <span class="description-text"><%= t "word_learned" %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,7 +1,14 @@
-<div class="center jumbotron">
+<div class="center parallax">
   <h1><%= t "welcome_text" %></h1>
-
   <h2><%= t "sub_welcome_text" %></h2>
+  <% if logged_in? %>
+    <%= link_to t("start_learning"), categories_path,
+      class: "btn btn-lg btn-primary btn-signup" %>
+  <% else %>
+    <%= link_to t("join_now"), new_user_path,
+      class: "btn btn-lg btn-primary btn-signup" %>
+  <% end %>
+</div>
+<div class="content">
 
-  <%= link_to t("join_now"), new_user_path, class: "btn btn-lg btn-primary" %>
 </div>

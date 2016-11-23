@@ -1,29 +1,33 @@
 <% provide :title, @category.name %>
-
-<div class="row jumbotron">
-  <h1><%= @category.name %></h1>
-  <h4><%= t "label_word_per_lesson" %>  <%= @category.word_count %></h4>
-  <h4><%= t "duration_title" %>  <%= @category.duration %></h4>
+<div class="container-fluid center parallax">
+  <div class="left col-md-offset-2">
+    <h1><%= @category.name %></h1>
+    <h4><%= @category.word_count %> <%= t "label_word_per_lesson" %></h4>
+    <h4><%= @category.duration %> <%= t "duration_title" %></h4>
+  </div>
 </div>
 
-<div class="container">
-  <ul class="nav nav-tabs">
+<div class="container-fluid pills-container">
+  <ul class="nav nav-pills col-md-3 col-md-offset-2">
     <li class="active">
       <a data-toggle="tab" href="#lessons-content"><%= t "link_lessons" %></a>
     </li>
     <li>
-      <a data-toggle="tab" href="#words-content"><%= t "link_words" %></a>
+      <a data-toggle="tab" href="#word-content"><%= t "link_words" %></a>
     </li>
   </ul>
-  <div class="tab-content">
-    <div id="words-content" class="tab-pane fade">
-      <%= render "words/search_form" %>
-      <div id="word-content">
-        <%= render @words %>
-      </div>
-      <%= will_paginate @words %>
-    </div>
 
+  <div class="col-md-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-3"></div>
+    <div class="col-md-5">
+      <%= render "words/search_form" %>
+    </div>
+  </div>
+</div>
+
+<div class="container content">
+  <div class="tab-content">
     <div id="lessons-content" class="tab-pane fade in active">
       <%= form_for @support.lesson, remote: true do |f| %>
         <%= f.hidden_field :category_id, value: @category.id %>
@@ -36,6 +40,15 @@
           <% end %>
         <% end %>
       </div>
+    </div>
+    <div id="word-content" class="tab-pane fade">
+      <% if @words.any? %>
+        <% @words.each do |word| %>
+          <%= render "words/word", word: word %>
+        <% end %>
+      <% end %>
+
+      <%= will_paginate @words %>
     </div>
   </div>
 </div>

@@ -67,3 +67,8 @@ function countdown() {
   }
   $("#lesson-countdown").html($minutes + " : " + $seconds);
 }
+
+$(document).on('scroll', function () {
+  var currScrollPos = $(document).scrollTop();
+  $(".parallax").css('background-position', '0 ' + -currScrollPos/4 + 'px');
+});

@@ -1,0 +1,9 @@
+<div class="box box-widget widget-user">
+  <div class="widget-user-header bg-aqua-active">
+    <h3 class="widget-user-username"><%= @user.name %></h3>
+  </div>
+  <div class="widget-user-image">
+    <%= gravatar_for @user %>
+  </div>
+  <%= render "shared/stats" %>
+</div>
