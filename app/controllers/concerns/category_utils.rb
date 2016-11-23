@@ -11,4 +11,9 @@ module CategoryUtils
       redirect_to current_user.is_admin ? admin_categories_path : categories_path
     end
   end
+
+  def search_categories
+    @categories = Category.search(params[:search]).paginate page: params[:page],
+      per_page: Settings.per_page_users
+  end
 end

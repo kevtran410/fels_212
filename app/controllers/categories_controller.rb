@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   include CategoryUtils
 
+  before_action :search_categories, only: :index
   before_action :logged_in_user, :find_category, :find_words, only: :show
 
   include CategoryUtils
@@ -8,12 +9,21 @@ class CategoriesController < ApplicationController
   before_action :find_category, only: :show
 
   def index
-    @categories = Category.search(params[:search]).paginate page: params[:page],
-      per_page: Settings.per_page_users
+    if params[:search].present?
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   def show
-    @support = Supports::Category.new @category
+    if params[:search].present?
+      respond_to do |format|
+        format.js
+      end
+    else
+      @support = Supports::Category.new @category
+    end
   end
 
   private

@@ -8,20 +8,23 @@
 
 <div class="container">
   <ul class="nav nav-tabs">
+    <li class="active">
+      <a data-toggle="tab" href="#lessons-content"><%= t "link_lessons" %></a>
+    </li>
     <li>
       <a data-toggle="tab" href="#words-content"><%= t "link_words" %></a>
     </li>
-    <li>
-      <a data-toggle="tab" href="#lessons-content"><%= t "link_lessons" %></a>
-    </li>
   </ul>
   <div class="tab-content">
-    <div id="words-content" class="tab-pane fade in active">
+    <div id="words-content" class="tab-pane fade">
       <%= render "words/search_form" %>
-      <%= render @words %>
+      <div id="word-content">
+        <%= render @words %>
+      </div>
       <%= will_paginate @words %>
     </div>
-    <div id="lessons-content" class="tab-pane fade">
+
+    <div id="lessons-content" class="tab-pane fade in active">
       <%= form_for @support.lesson, remote: true do |f| %>
         <%= f.hidden_field :category_id, value: @category.id %>
         <%= f.submit t("create_lesson"), class: "btn btn-primary" %>

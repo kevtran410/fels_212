@@ -7,7 +7,7 @@ class Category < ApplicationRecord
   validates :word_count, presence: true, numericality: {only_integer: true}
 
   scope :ongoing_course, ->(user_id){joins(:lessons).
-    where("lessons.user_id = ?", user_id)}
+    where("lessons.user_id = ?", user_id).group("categories.id")}
   scope :search_categories, ->(search_value){where "name LIKE ?",
     "%#{search_value}%"}
   
