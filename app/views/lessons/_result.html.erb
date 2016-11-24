@@ -1,0 +1,12 @@
+<div class="result-item">
+  <div class="item-header">
+    <%= f.object.word.content %>
+  </div>
+  <div class="item-content">
+    <% f.object.word.answers.each do |answer| %>
+      <%= f.radio_button :answer_id, answer.id,
+        checked: f.object.answer_id == answer.id %>
+      <%= answer_label f.object, answer %>
+    <% end %>
+  </div>
+</div>
