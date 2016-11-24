@@ -1,4 +1,5 @@
-<%= form_tag categories_path, method: "get", class: "input-group" do %>
+<%= form_tag categories_path, method: :get, remote: true,
+  class: "input-group" do %>
   <%= text_field_tag :search, params[:search], placeholder: t("search_text"),
     class: "form-control txtSearch" %>
   <span class="input-group-btn">
