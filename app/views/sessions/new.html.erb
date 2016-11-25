@@ -1,23 +1,25 @@
 <% provide :title, t("log_in") %>
-<h1><%= t("log_in") %></h1>
+<div class="container">
+  <h1><%= t("log_in") %></h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for :session, url: login_path do |f| %>
-      <%= f.label t("label_email") %>
-      <%= f.email_field :email, class: "form-control" %>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= form_for :session, url: login_path do |f| %>
+        <%= f.label t("label_email") %>
+        <%= f.email_field :email, class: "form-control" %>
 
-      <%= f.label t("label_password") %>
-      <%= f.password_field :password, class: "form-control" %>
+        <%= f.label t("label_password") %>
+        <%= f.password_field :password, class: "form-control" %>
 
-      <%= f.label t("remember_checkbox"), class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <span><%= t("remember_label") %></span>
+        <%= f.label t("remember_checkbox"), class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span><%= t("remember_label") %></span>
+        <% end %>
+
+        <%= f.submit t("log_in"), class: "btn btn-primary form-control" %>
       <% end %>
 
-      <%= f.submit t("log_in"), class: "btn btn-primary" %>
-    <% end %>
-
-    <p><%= t "new_user_btn" %> <%= link_to t("signup_label"), "#" %></p>
+      <p><%= t "new_user_btn" %> <%= link_to t("signup_label"), new_user_path %></p>
+    </div>
   </div>
 </div>

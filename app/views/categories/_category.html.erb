@@ -1,4 +1,19 @@
-<li>
-  <strong><%= category.name %></strong>
-  <%= link_to t("learn_button"), category %>
-</li>
+<div class="row category">
+  <div class="category-item-content col-md-12">
+    <img class="category-img pull-left" src="http://d2rhekw5qr4gcj.cloudfront.net/img/400sqf/from/uploads/course_photos/32000160516082116.jpg">
+    <div class="category-item-name">
+      <h4><strong><%= category.name %></strong></h4>
+      <p class="category-description"></p>
+    </div>
+  </div>
+
+  <div class="col-md-2 col-md-offset-10">
+    <small><%= category.words.count %> Words</small>
+  </div>
+  <div class="item-footer col-md-12">
+    <div class="col-md-3 col-md-offset-9">
+      <%= link_to t("learn_button"), category,
+        class: "btn btn-block btn-primary learn-btn btn-signup" %>
+    </div>
+  </div>
+</div>
