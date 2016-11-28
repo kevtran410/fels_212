@@ -2,11 +2,30 @@
 <div class="container">
   <div class="content">
     <div class="col-md-3">
-      <%= render "shared/user_profile_widget" %>
-      <section>
-        <%= render "users/follow_form" %>
-      </section>
+      <div class="row">
+        <%= render "shared/user_profile_widget" %>
+        <section class="center">
+          <%= render "users/follow_form" %>
+        </section>
+      </div>
+
+      <% if current_user.current_user? @user %>
+        <div class="row people-to-follow">
+          <div class="box box-widget widget-user">
+            <div class="people-to-follow-header bg-aqua-active">
+              <h3 class="widget-user-username">
+                <span class="glyphicon glyphicon-user"></span>
+                <%= "follow now" %>
+              </h3>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <%= render @support_user.users_to_follow %>
+          </div>
+        </div>
+      <% end %>
     </div>
+
     <div class="col-md-8 nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active">
@@ -16,9 +35,10 @@
           <a data-toggle="tab" href="#activitites-content"><%= t "link_activities" %></a>
         </li>
       </ul>
-      <div class="tab-content">
-        <div id="courses-content" class="tab-pane fade in active">
-          <p><%= render @courses %></p>
+      <div class="tab-content col-md-12">
+        <div id="courses-content" class="tab-pane fade in active col-md-12">
+            <%= render @categories %>
+            <%= will_paginate @categories %>
         </div>
         <div id="activitites-content" class="tab-pane fade">
           <% if @user.activities.any? %>

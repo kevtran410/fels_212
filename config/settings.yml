@@ -1,4 +1,6 @@
 per_page_users: 10
+per_page_courses: 3
 size_gravatar: 100
 mininum_answers_count: 2
 logo_link: "http://recruit.framgia.vn/wp-content/themes/framgia-vn/css/images/logo/framgia-logo.png"
+category_img: "http://d2rhekw5qr4gcj.cloudfront.net/img/400sqf/from/uploads/course_photos/32000160516082116.jpg"

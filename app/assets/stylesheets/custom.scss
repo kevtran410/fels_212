@@ -66,7 +66,6 @@ p {
 }
 
 a {
-  color: black;
   &:hover {
     text-decoration: none;
   }
@@ -207,13 +206,7 @@ input {
 /* users index page */
 
 .users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
+  margin-bottom: 10px;
 }
 
 .checkbox {
@@ -280,6 +273,10 @@ $gray-medium-light: #eaeaea;
   text-align: center;
 }
 
+#category-filter-form {
+  display: none;
+}
+
 /* categories index page */
 .categories-header {
   background-color: white;
@@ -314,12 +311,6 @@ $gray-medium-light: #eaeaea;
   color: white;
 }
 
-.user-info {
-  background-color: white;
-  border-radius: 2px;
-  margin-top: 10px;
-}
-
 .avatar-header {
   background-color: #11a3ed;
   border-top-left-radius: 2px;
@@ -350,7 +341,24 @@ $gray-medium-light: #eaeaea;
 p.category-description {
   margin: 0px;
 }
+
+/* user profile page */
+.people-to-follow {
+  border-radius: 3px;
+  margin-top: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.people-to-follow-header {
+  padding: 10px;
+  height: 50px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
 /* user profile widget*/
+
 .box {
   position: relative;
   border-radius: 3px;
@@ -475,7 +483,7 @@ p.category-description {
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
   border-left: 1px solid #ddd;
-  min-height: 500px;
+  min-height: 725px;
 }
 
 .nav-pills > li > a {
@@ -507,4 +515,82 @@ p.category-description {
 .pills-container {
   background-color: white;
   padding: 5px 0;
+}
+
+/* lessons table*/
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
+th {
+  background-color: #11a3ed;
+  color: white;
+}
+
+/*404 page*/
+
+.error-page {
+  width: 600px;
+  margin: 20px auto 0 auto;
+}
+
+.error-page > .headline {
+  float: left;
+  font-size: 100px;
+  font-weight: 300;
+}
+
+.error-page > .error-content {
+  margin-left: 190px;
+  display: block;
+}
+
+.error-page > .error-content > h3 {
+  font-weight: 300;
+  font-size: 25px;
+}
+
+.text-yellow {
+  color: #f39c12 !important;
+}
+
+/* do lesson and view result*/
+
+.lesson-header {
+  text-align: left;
+  font-size: xx-large;
+  border-bottom: 1px solid #BBBBBB;
+  margin-bottom: 50px;
+}
+
+.item-header {
+  background: #eaeaea;
+  color: black;
+  padding: 4px 20px;
+}
+
+.result-row {
+  margin-bottom: 30px;
+}
+
+#lesson-countdown {
+  text-align: right;
+}
+
+.btn-finish {
+  float: right;
+  background-color: #6BDE25;
+  color: white;
+  padding: 5px 30px;
 }

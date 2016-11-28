@@ -1,0 +1,19 @@
+<div class="container content">
+  <section class="content">
+    <div class="error-page">
+      <h2 class="headline text-yellow">404</h2>
+
+      <div class="error-content">
+        <h3><i class="glyphicon glyphicon-warning-sign text-yellow"></i>
+          <%= t "page_not_found" %>
+        </h3>
+
+        <p>
+          <%= t "page_not_found_detail" %>
+          <%= link_to "return to dashboard", current_user %>
+          <%= t "page_not_found_try_again" %>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>

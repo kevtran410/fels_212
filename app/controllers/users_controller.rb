@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :find_user, except: [:index, :new, :create]
   before_action :valid_user, only: [:edit, :update]
 
+  include CategoryUtils
+
   def index
     @users = User.search_users(params[:search]).paginate page: params[:page],
       per_page: Settings.per_page_users
@@ -29,12 +31,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @courses = Category.ongoing_course @user.id
-    @relationship = if current_user.following? @user
-      current_user.active_relationships.find_by followed_id: @user.id
-    else
-      current_user.active_relationships.build
-    end
+    @categories = Category.ongoing_course(@user.id).
+      paginate page: params[:page], per_page: Settings.per_page_courses
+    words_count
+    @support_user = Supports::User.new words_count: @words_count,
+      user: current_user
   end
 
   def edit

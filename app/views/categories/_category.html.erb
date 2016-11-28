@@ -1,15 +1,33 @@
 <div class="row category">
   <div class="category-item-content col-md-12">
-    <img class="category-img pull-left" src="http://d2rhekw5qr4gcj.cloudfront.net/img/400sqf/from/uploads/course_photos/32000160516082116.jpg">
+    <img class="category-img pull-left" src="<%= Settings.category_img %>">
     <div class="category-item-name">
-      <h4><strong><%= category.name %></strong></h4>
+      <h4><strong>
+        <%= link_to category.name, category_path(category) %>
+      </strong></h4>
       <p class="category-description"></p>
+      <div class="text-right">
+        <% if @words_count.present? %>
+          <small><%= @words_count[category.id] %></small>
+        <% else %>
+          <small>0</small>
+        <% end %>
+        <small>
+          /<%= category.words.count %> <%= t "words learned" %>
+        </small>
+      </div>
+      <div class="progress">
+        <% if logged_in? %>
+          <div class="progress-bar progress-bar-warning" role="progressbar"
+            style="width:<%= @words_count[category.id].to_i * 100 /category.words.count %>%">
+            <%= @words_count[category.id].to_i * 100 / category.words.count %>
+            <%= t "progress_bar_title" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 
-  <div class="col-md-2 col-md-offset-10">
-    <small><%= category.words.count %> Words</small>
-  </div>
   <div class="item-footer col-md-12">
     <div class="col-md-3 col-md-offset-9">
       <%= link_to t("learn_button"), category,

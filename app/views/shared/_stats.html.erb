@@ -27,10 +27,13 @@
 
     <div class="col-sm-4 border-right">
       <div class="description-block">
-        <%= link_to relationships_path user_id: @user,
-          relationship: t("followers") do %>
+        <%= link_to categories_path do %>
           <h5 class="description-header">
-            <strong></strong>
+            <% if @words_count.present? %>
+              <strong><%= @support_user.sum %></strong>
+            <% else %>
+              <strong>0</strong>
+            <% end %>
           </h5>
           <span class="description-text"><%= t "word_learned" %></span>
         <% end %>

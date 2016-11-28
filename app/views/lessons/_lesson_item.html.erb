@@ -1,8 +1,8 @@
-<div class="lesson-item">
-  <%= lesson.created_at.to_formatted_s(:long) %>
-  <%= lesson.category.name %>
-  <%= score_field lesson %>
-  <%= status_field lesson %>
-  <%= spent_time_field lesson %>
-  <%= action_button lesson %>
-</div>
+<tr class="lesson-item">
+  <td><%= lesson.created_at.to_formatted_s(:long) %></td>
+  <td><%= lesson.category.name %></td>
+  <td><%= status_field lesson %></td>
+  <td><%= spent_time_field lesson %></td>
+  <td><%= score_field lesson %></td>
+  <td><%= action_button lesson %></td>
+</tr>
