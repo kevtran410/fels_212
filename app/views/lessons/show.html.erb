@@ -1,4 +1,6 @@
-<% unless @lesson.finished? %>
+<% if @lesson.finished? %>
+  <%= @lesson.get_score_text %>
+<% else %>
   <div id="lesson-countdown"></div>
   <%= hidden_field :duration, "lesson",
     value: (@lesson.end_time - Time.now).to_i %>

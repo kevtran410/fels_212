@@ -11,16 +11,22 @@ class Lesson < ApplicationRecord
 
   before_create :init_resutlts
 
-  def get_score
-    if finished?
-      score = 0
-      results.each do |result|
-        if result.answer.present? && result.answer.is_correct?
-          score += 1
-        end
-      end
-      score
+  def get_score_text
+    if score.present?
+      "#{score}/#{category.word_count}"
+    else
+      "-"
     end
+  end
+
+  def assign_score
+    score = 0
+    results.each do |result|
+      if result.answer.present? && result.answer.is_correct?
+        score += 1
+      end
+    end
+    assign_attributes score: score
   end
 
   def init_resutlts

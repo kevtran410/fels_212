@@ -1,7 +1,7 @@
 module LessonsHelper
 
   def score_field lesson
-    lesson.finished? ? lesson.get_score : "-"
+    lesson.get_score_text
   end
 
   def status_field lesson
