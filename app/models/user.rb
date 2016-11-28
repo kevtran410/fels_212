@@ -24,6 +24,11 @@ class User < ApplicationRecord
   scope :search_users, ->(search_value){where "name LIKE ?",
     "%#{search_value}%"}
 
+  scope :people_to_follow, ->(current_id){
+    where("id != ? AND id not in
+    (SELECT followed_id FROM relationships
+    WHERE relationships.follower_id = ? )", current_id, current_id).limit 4}
+
   class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

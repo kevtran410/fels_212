@@ -15,11 +15,25 @@ class Word < ApplicationRecord
   scope :search_words, ->(search_value, category_id){joins(:answers).
     where("words.content LIKE ? AND category_id = ? AND is_correct = ?",
     "%#{search_value}%", category_id, true).
-    select("words.content as w_content, answers.content as a_content")}
+    select "words.content, answers.content as a_content, words.created_at"}
 
-  scope :find_all, ->(category_id){joins(:answers).
+  scope :find_all, ->(user_id, category_id){joins(:answers).
     where("category_id = ? AND is_correct = ?", category_id, true).
-    select("words.content as w_content, answers.content as a_content")}
+    select "words.content, answers.content as a_content, words.created_at"}
+
+  scope :alphabet,->{order content: :asc}
+  scope :newest, ->{order created_at: :desc}
+  scope :oldest, ->{order created_at: :asc}
+
+  scope :learned_words, ->(user_id, category_id){
+    where "words.id in (SELECT r.word_id FROM results r join lessons l
+    on r.lesson_id = l.id WHERE l.user_id = ? AND l.category_id = ?)",
+      user_id, category_id}
+
+  scope :not_learned_words, ->(user_id, category_id){
+    where "words.id not in (SELECT r.word_id FROM results r join lessons l
+    on r.lesson_id = l.id WHERE l.user_id = ? AND l.category_id = ?) AND
+    words.category_id = ?", user_id, category_id, category_id}
 
   class << self
     def search search_value, category_id

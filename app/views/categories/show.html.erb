@@ -8,39 +8,52 @@
 </div>
 
 <div class="container-fluid pills-container">
-  <ul class="nav nav-pills col-md-3 col-md-offset-2">
-    <li class="active">
+  <ul class="nav nav-pills col-md-2 col-md-offset-2">
+    <li class="active lesson-pill">
       <a data-toggle="tab" href="#lessons-content"><%= t "link_lessons" %></a>
     </li>
-    <li>
+    <li class="word-pill">
       <a data-toggle="tab" href="#word-content"><%= t "link_words" %></a>
     </li>
   </ul>
 
-  <div class="col-md-5">
-    <div class="col-md-4"></div>
-    <div class="col-md-3"></div>
-    <div class="col-md-5">
-      <%= render "words/search_form" %>
-    </div>
+  <div class="col-md-7" id="category-filter-form">
+    <%= render "words/search_form" %>
   </div>
 </div>
 
 <div class="container content">
   <div class="tab-content">
     <div id="lessons-content" class="tab-pane fade in active">
-      <%= form_for @support.lesson, remote: true do |f| %>
-        <%= f.hidden_field :category_id, value: @category.id %>
-        <%= f.submit t("create_lesson"), class: "btn btn-primary" %>
-      <% end %>
-      <div id="div-lesson-list">
-        <% if @support.lessons.any? %>
-          <% @support.lessons.each do |lesson| %>
-            <%= render "lessons/lesson_item", lesson: lesson %>
+      <table class="table-responsive">
+        <tr class="lessons-table-header">
+          <th><%= t "lessons_table_created_date" %></th>
+          <th><%= t "lessons_table_category" %></th>
+          <th><%= t "lessons_table_status" %></th>
+          <th><%= t "lessons_table_spent_time" %></th>
+          <th><%= t "lessons_table_score" %></th>
+          <th>
+            <%= form_for @support.lesson, remote: true do |f| %>
+              <%= f.hidden_field :category_id, value: @category.id %>
+              <%= f.submit t("create_lesson"), class: "btn btn-signup" %>
+            <% end %>
+          </th>
+        </tr>
+        <div id="div-lesson-list">
+          <% if @support.lessons.any? %>
+            <% @support.lessons.each do |lesson| %>
+              <%= render "lessons/lesson_item", lesson: lesson %>
+            <% end %>
           <% end %>
+        </div>
+      </table>
+      <div class="center">
+        <% if @support.lessons.any? %>
+          <%= will_paginate @support.lessons %>
         <% end %>
       </div>
     </div>
+
     <div id="word-content" class="tab-pane fade">
       <% if @words.any? %>
         <% @words.each do |word| %>

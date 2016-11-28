@@ -47,6 +47,30 @@ $(document).on('turbolinks:load', function() {
     initCountdown();
     $counter = setInterval(countdown, 1000);
   }
+
+  $('.word-pill').on('click', function () {
+    $('#category-filter-form').show();
+  });
+
+  $('.lesson-pill').on('click', function () {
+    $('#category-filter-form').hide();
+  });
+
+  $('#filter_not_learned_words').on('click', function () {
+    $('#word-search-form').submit();
+  });
+
+  $('#filter_learned_words').on('click', function () {
+    $('#word-search-form').submit();
+  });
+
+  $('#filter_find_all').on('click', function () {
+    $('#word-search-form').submit();
+  });
+
+  $('#select').on('change', function () {
+    $('#word-search-form').submit();
+  })
 });
 
 function initCountdown() {

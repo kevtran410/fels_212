@@ -11,6 +11,9 @@ class Lesson < ApplicationRecord
 
   before_create :init_resutlts
 
+  scope :filter_by_user, ->(user_id){order(created_at: :desc).
+    where "lessons.user_id = ?", user_id}
+
   def get_score_text
     if score.present?
       "#{score}/#{category.word_count}"

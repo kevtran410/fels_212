@@ -7,13 +7,20 @@ module CategoryUtils
       @category = Category.find_by id: id
     end
     if @category.nil?
-      flash[:danger] = t "category_not_found_message"
-      redirect_to current_user.is_admin ? admin_categories_path : categories_path
+      render "layouts/404_not_found"
     end
   end
 
   def search_categories
     @categories = Category.search(params[:search]).paginate page: params[:page],
       per_page: Settings.per_page_users
+  end
+
+  def words_count
+    @words_count = Hash.new
+    @categories.each do |category|
+      @words_count[category.id] = category.words.
+        learned_words(current_user.id, category.id).size
+    end
   end
 end
