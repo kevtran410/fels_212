@@ -15,15 +15,13 @@ class ApplicationController < ActionController::Base
   def find_user
     @user = User.find_by id: params[:id]
     if @user.nil?
-      flash[:danger] = t "cant_find_user"
-      redirect_to request.referrer || root_url
+      render "layouts/404_not_found"
     end
   end
 
   def require_admin
     unless current_user.is_admin?
-      flash[:danger] = t "require_admin_message"
-      redirect_to root_url
+      render "layouts/404_not_found"
     end
   end
 end
